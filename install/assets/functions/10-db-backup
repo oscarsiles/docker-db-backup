@@ -611,7 +611,10 @@ compression() {
             target=${target}.xz
         ;;
         zst* )
-            compress_cmd="zstd -q -q --rm -${COMPRESSION_LEVEL} -T${PARALLEL_COMPRESSION_THREADS} "
+	    if var_true "${ZSTD_RSYNCABLE}" ; then
+                zstd_rsyncable=--rsyncable
+            fi
+            compress_cmd="zstd -q -q --rm -${COMPRESSION_LEVEL} -T${PARALLEL_COMPRESSION_THREADS} ${zstd_rsyncable}"
             compression_type="zstd"
             dir_compress_cmd=${compress_cmd}
             extension=".zst"
