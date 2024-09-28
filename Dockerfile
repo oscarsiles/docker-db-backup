@@ -55,8 +55,8 @@ RUN source /assets/functions/00-container && \
                     openssl \
                     pigz \
                     pixz \
-                    postgresql16 \
-                    postgresql16-client \
+                    postgresql17 \
+                    postgresql17-client \
                     pv \
                     py3-botocore \
                     py3-colorama \
